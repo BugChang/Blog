@@ -1,0 +1,9 @@
+﻿@page "/"
+@using Blog.Blazor
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_Layout";
+}
+<component type="typeof(App)" render-mode="ServerPrerendered" />

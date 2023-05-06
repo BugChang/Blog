@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+
+<MApp>
+    <MAppBar App>
+        <MContainer Class="d-flex justify-space-between align-center">
+            <MToolbarTitle>BugChang's Blog</MToolbarTitle>
+            <MSpacer></MSpacer>
+            <MButton Text>首页</MButton>
+            <MButton Text>分类</MButton>
+            <MButton Text>关于</MButton>
+        </MContainer>
+    </MAppBar>
+
+    <!-- 根据应用组件来调整你的内容 -->
+    <MMain>
+        <!-- 给应用提供合适的间距 -->
+        <MContainer>
+            @Body
+        </MContainer>
+    </MMain>
+
+    <MFooter App>
+        <!-- -->
+    </MFooter>
+</MApp>

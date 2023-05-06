@@ -1,0 +1,25 @@
+﻿<MCard Class="@Class">
+    <MImage Src="https://api.hanximeng.com/ranimg/api.php" MaxHeight="270">
+        <MCardTitle Class="article-title">Blazor Hybrid (混合)，可以通过它在 ASP.NET Core 应用中使用</MCardTitle>
+    </MImage>
+    <MCardText>
+        Blazor Hybrid (混合)，可以通过它在 ASP.NET Core 应用中使用.NET 生成交互式客户端 Web UI。 使用 Blazor Hybrid 将桌面和移动本机客户端框架与.NET 和 Blazor 结合使用。 在 Blazor Hybrid 应用中，Razor 组件在设备上本机运行。 组件通过本地互操作通道呈现到嵌入式 Web View 控件。
+    </MCardText>
+    <MCardActions>
+        <MSpacer></MSpacer>
+        <MButton Text>Read More</MButton>
+    </MCardActions>
+</MCard>
+<style>
+    .article-title {
+        bottom: 0;
+        position: absolute;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        width: 100%;
+    }
+</style>
+@code {
+    [Parameter]
+    public string Class { get; set; }
+}

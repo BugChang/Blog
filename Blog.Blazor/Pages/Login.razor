@@ -1,9 +1,7 @@
 ﻿@page "/login"
 @using Blog.Blazor.ViewModels
-@using Blog.Blazor.Controllers
-@layout EmptyLayout
+@layout MainLayout
 @inject NavigationManager NavigationManager
-@inject IHttpClientFactory ClientFactory
 @inject IJSRuntime JsRuntime
 <MRow>
     <MCol Cols="4" Class="blue lighten-5">
@@ -60,7 +58,10 @@
         {
             var result =
                 await JsRuntime.InvokeAsync<string>("postRequest", "https://localhost:7200/api/account/login", _model);
-
+            if (result == "成功")
+            {
+                NavigationManager.NavigateTo("/console", true);
+            }
         }
     }
 

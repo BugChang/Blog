@@ -20,9 +20,9 @@ namespace Blog.Blazor.Controllers
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.Name, "admin"));
                 await HttpContext.SignInAsync(new ClaimsPrincipal(identity), new AuthenticationProperties() { IsPersistent = true, ExpiresUtc = DateTimeOffset.Now.AddMinutes(30) });
-                return Ok();
+                return Ok("成功");
             }
-            return BadRequest();
+            return BadRequest("失败");
         }
 
        

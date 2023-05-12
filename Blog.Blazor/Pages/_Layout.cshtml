@@ -18,19 +18,19 @@
 <script src="_framework/blazor.server.js"></script>
 <script src="_content/BlazorComponent/js/blazor-component.js"></script>
 <script>
-        window.postRequest = (url, obj) => {
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.open('POST', url, true);
-            httpRequest.setRequestHeader("Content-type", "application/json");
-            httpRequest.send(JSON.stringify(obj));
-
-            // 响应后的回调函数
-            httpRequest.onreadystatechange = function () {
-                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                    var json = httpRequest.responseText;
-                    return json;
+        window.postRequest = async (url, obj) => {
+            const init = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            };
+            }
+
+            init.body = JSON.stringify(obj)
+
+            const response = await fetch(url, init)
+            const json = await response.text()
+            return json
         }
     </script>
 </body>

@@ -1,0 +1,12 @@
+﻿.article-list .card {
+    margin-bottom: 25px;
+}
+
+.component .card {
+    margin-bottom: 25px;
+}
+
+.component-title, .article-meta {
+    font-size: 14px;
+    color: #7A7A7A;
+}

@@ -1,0 +1,7 @@
+﻿@using Blog.Web.Views.Shared.Components.ArticlePreview
+<div class="article-list">
+    @for (int i = 0; i < 10; i++)
+    {
+        @(await Component.InvokeAsync(typeof(ArticlePreviewViewComponent)))
+    }
+</div>

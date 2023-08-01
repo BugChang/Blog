@@ -18,4 +18,8 @@
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Category\Default.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\feather\fonts\feather.svg" />
+  </ItemGroup>
+
 </Project>

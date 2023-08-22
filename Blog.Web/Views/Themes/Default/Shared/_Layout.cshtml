@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html theme="light" showBanner="true" hasBanner="true">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="~/themes/default/loadSettings.js"></script>
+    <link rel="stylesheet" href="~/themes/default/style.css">
+</head>
+
+<body>
+    @await Html.PartialAsync("_Banner")
+    @await Html.PartialAsync("_ColorPicker")
+    <div id="main-grid" class="shadow">
+        @await Html.PartialAsync("_Navbar")
+        @await Html.PartialAsync("_SideBar")
+        <div id="content-body">
+            @RenderBody()
+        </div>
+        <div id="footer-wrapper">
+            <footer id="footer">
+                <div id="footer-info" class="inner">
+                    &copy; 2023 BugChang<br>
+                    Powered by <a href="https://dotnet.microsoft.com/" target="_blank">.Net 6</a> on linux & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+                </div>
+            </footer>
+        </div>
+        <div class="back-to-top-wrapper">
+            <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+                <span class="material-symbols-rounded">keyboard_arrow_up</span>
+            </button>
+        </div>
+    </div>
+    <script src="~/themes/default/main.js"></script>
+</body>
+</html>

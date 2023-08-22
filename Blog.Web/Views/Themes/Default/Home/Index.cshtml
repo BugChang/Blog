@@ -1,0 +1,16 @@
+﻿@for (int i = 0; i < 10; i++)
+{
+    @await Html.PartialAsync("_Article")
+}
+<nav id="page-nav">
+    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
+    <a id="prev-btn" class="page-nav-btn disabled" href=" /vivia-preview/  ">
+        <span class="material-symbols-rounded">navigate_before</span>
+    </a>
+    <div id="num-bar">
+        <span class="page-number current">1</span><a class="page-number" href="/vivia-preview/page/2/">2</a>
+    </div>
+    <a id="next-btn" class="page-nav-btn " href="/vivia-preview/page/2/">
+        <span class="material-symbols-rounded">navigate_next</span>
+    </a>
+</nav>

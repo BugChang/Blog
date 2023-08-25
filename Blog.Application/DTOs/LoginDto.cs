@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Web.Models
+namespace Blog.Application.DTOs
 {
-    public class LoginViewModel
+    public class LoginDto
     {
         [Required]
         public string Email { get; set; }

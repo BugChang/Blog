@@ -1,27 +1,37 @@
 ﻿using System.Security.Claims;
-using Blog.Web.Models;
+using Blog.Application.DTOs;
+using Blog.Application.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
-        public IActionResult Login()
+        private readonly IAccountAppService _accountAppService;
+
+        public AccountController(IAccountAppService accountAppService)
         {
+            _accountAppService = accountAppService;
+        }
+
+        public IActionResult Login(string returnUrl = "/")
+        {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel, string returnUrl = "/")
+        public async Task<IActionResult> Login(LoginDto loginDto, string returnUrl = "/")
         {
             if (ModelState.IsValid)
             {
+                var userDto = await _accountAppService.LoginAsync(loginDto.Email, loginDto.Password);
                 var claims = new List<Claim>
                 {
-                    new(ClaimTypes.Email, loginViewModel.Email),
-                    new(ClaimTypes.Name, "BugChang"),
-                    new(ClaimTypes.Role, "Administrator"),
+                    new(ClaimTypes.Email, userDto.Email),
+                    new(ClaimTypes.Name, userDto.Name),
+                    new(ClaimTypes.Role, userDto.Role.ToString()),
                 };
                 var claimsIdentity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -36,7 +46,7 @@ namespace Blog.Web.Controllers
                     // value set here overrides the ExpireTimeSpan option of 
                     // CookieAuthenticationOptions set with AddCookie.
 
-                    IsPersistent = loginViewModel.IsPersistent,
+                    IsPersistent = loginDto.IsPersistent,
                     // Whether the authentication session is persisted across 
                     // multiple requests. When used with cookies, controls
                     // whether the cookie's lifetime is absolute (matching the
